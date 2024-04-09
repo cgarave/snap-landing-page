@@ -1,35 +1,16 @@
-import { useState } from 'react';
 import logo from './assets/images/logo.svg';
 
 function Nav() {
-    const [active, setActive] = useState(false);
-    
-    function handleClick(event){
-        if(active == false){
-            setActive(true);
-            event.target.classList.add('text-black');
-            event.target.childNodes[1].classList.add("rotate-180");
-            event.target.parentElement.childNodes[1].classList.add("block");
-            event.target.parentElement.childNodes[1].classList.remove("hidden");
-        } else {
-            setActive(false);
-            event.target.classList.remove('text-black');
-            event.target.childNodes[1].classList.remove("rotate-180");
-            event.target.parentElement.childNodes[1].classList.remove("block");
-            event.target.parentElement.childNodes[1].classList.add("hidden");
-        }
-    }
-
     return (
         <nav className='w-full flex flex-row items-center justify-between font-epilogue text-sm font-medium text-gray-600 p-5'>
             <div className='flex flex-row items-center gap-x-10'>
                 <img src={logo} alt="" />
                 <ul className='flex flex-row gap-x-10'>
-                    <div className="dropdown dropdown-bottom" onClick={handleClick}>
-                      <div tabIndex={0} className="cursor-pointer hover:text-black flex flex-row items-center gap-x-2">Features
-                      <div><svg xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></div>
+                    <div className="dropdown dropdown-hover group/hov">
+                      <div tabIndex={0} className="group cursor-pointer hover:text-black flex flex-row items-center gap-x-2">Features
+                      <span className='group-hover/hov:rotate-180 duration-200'><svg xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></span>
                       </div>
-                      <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-36">
+                      <ul tabIndex={0} className="group/hov dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-36">
                         <li>
                             <a>
                                 <span><svg width="14" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M14 3v12a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h1V1a1 1 0 1 1 2 0v1h2V1a1 1 0 1 1 2 0v1h2V1a1 1 0 0 1 2 0v1h1a1 1 0 0 1 1 1Zm-2 3H2v1h10V6Zm0 3H2v1h10V9Zm0 3H2v1h10v-1Z" fill="#726CEE"/></svg></span>
@@ -57,9 +38,9 @@ function Nav() {
                       </ul>
                     </div>
 
-                    <div className="dropdown dropdown-bottom" onClick={handleClick}>
-                      <div id='company-button' tabIndex={0} className="cursor-pointer hover:text-black flex flex-row items-center gap-x-2">Company
-                      <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg>
+                    <div className="dropdown dropdown-hover group/hov">
+                      <div id='company-button' tabIndex={0} className="group cursor-pointer hover:text-black flex flex-row items-center gap-x-2">Company
+                      <span className='group-hover/hov:rotate-180 duration-200'><svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></span>
                       </div>
                       <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-32">
                         <li><a>History</a></li>
@@ -69,14 +50,13 @@ function Nav() {
                     </div>
 
                     <li className='cursor-pointer hover:text-black'>Careers</li>
-
                     <li className='cursor-pointer hover:text-black'>About</li>
                 </ul>
             </div>
             
-            <div className='flex flex-row gap-x-10'>
+            <div className='flex flex-row gap-x-10 items-center'>
                 <button className='hover:text-black hover:underline'>Login</button>
-                <button className='btn btn-outline px-4 h-10 min-h-10 font-medium rounded-xl'>Register</button>
+                <button className='btn btn-outline hover:bg-transparent px-4 h-10 min-h-10 font-medium rounded-xl text-gray-600 hover:text-black'>Register</button>
             </div>
         </nav>
     )
