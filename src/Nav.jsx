@@ -5,7 +5,7 @@ function Nav() {
         <nav className='w-full flex flex-row items-center justify-between font-epilogue text-sm font-medium text-gray-600 p-5'>
             <div className='flex flex-row items-center gap-x-10'>
                 <img src={logo} alt="" />
-                <ul className='flex flex-row gap-x-10'>
+                <ul className='hidden md:flex flex-row gap-x-10'>
                     <div className="dropdown dropdown-hover group/hov">
                       <div tabIndex={0} className="group cursor-pointer hover:text-black flex flex-row items-center gap-x-2">Features
                       <span className='group-hover/hov:rotate-180 duration-200'><svg xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg></span>
@@ -54,9 +54,14 @@ function Nav() {
                 </ul>
             </div>
             
-            <div className='flex flex-row gap-x-10 items-center'>
+            <div className='hidden md:flex flex-row gap-x-10 items-center'>
                 <button className='hover:text-black hover:underline'>Login</button>
                 <button className='btn btn-outline hover:bg-transparent px-4 h-10 min-h-10 font-medium rounded-xl text-gray-600 hover:text-black'>Register</button>
+            </div>
+            <div className='md:hidden'>
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="22" height="22" viewBox="0 0 50 50">
+                <path d="M 5 8 A 2.0002 2.0002 0 1 0 5 12 L 45 12 A 2.0002 2.0002 0 1 0 45 8 L 5 8 z M 5 23 A 2.0002 2.0002 0 1 0 5 27 L 45 27 A 2.0002 2.0002 0 1 0 45 23 L 5 23 z M 5 38 A 2.0002 2.0002 0 1 0 5 42 L 45 42 A 2.0002 2.0002 0 1 0 45 38 L 5 38 z"></path>
+                </svg>
             </div>
         </nav>
     )
