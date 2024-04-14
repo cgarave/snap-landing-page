@@ -1,10 +1,50 @@
+import { createElement, useState } from 'react';
 import logo from './assets/images/logo.svg';
 
 function Nav() {
+
+    const [index, setIndex] = useState(false);
+    const [featureSwitch, setFeatureSwitch] = useState(false);
+    const [companySwitch, setCompanySwitch] = useState(false);
+
+    function hamburgerSwitch(){
+        if(!index){
+            document.getElementById("option").classList.replace('hidden', 'flex');
+            setIndex(true)
+        } else {
+            document.getElementById("option").classList.replace('flex', 'hidden');
+            setIndex(false)
+        }
+    }
+    
+    function showFeatures(){
+        if(!featureSwitch){
+            document.getElementById("featuresDropdown").classList.replace('hidden', 'flex');
+            document.getElementById("list-container").classList.replace('gap-y-16', 'gap-y-5');
+            setFeatureSwitch(true)
+        } else {
+            document.getElementById("featuresDropdown").classList.replace('flex', 'hidden');
+            document.getElementById("list-container").classList.replace('gap-y-5', 'gap-y-16');
+            setFeatureSwitch(false)
+        }
+    }
+
+    function showCompany(){
+        if(!companySwitch){
+            document.getElementById("companyDropdown").classList.replace('hidden', 'flex');
+            document.getElementById("list-container").classList.replace('gap-y-16', 'gap-y-5');
+            setCompanySwitch(true)
+        } else {
+            document.getElementById("companyDropdown").classList.replace('flex', 'hidden');
+            document.getElementById("list-container").classList.replace('gap-y-5', 'gap-y-16');
+            setCompanySwitch(false)
+        }
+    }
+
     return (
         <nav className='w-full flex flex-row items-center justify-between font-epilogue text-sm font-medium text-gray-600 p-5'>
             <div className='flex flex-row items-center gap-x-10'>
-                <img src={logo} alt="" />
+                <img src={logo} alt="" className='z-20' />
                 <ul className='hidden md:flex flex-row gap-x-10'>
                     <div className="dropdown dropdown-hover group/hov">
                       <div tabIndex={0} className="group cursor-pointer hover:text-black flex flex-row items-center gap-x-2">Features
@@ -58,10 +98,37 @@ function Nav() {
                 <button className='hover:text-black hover:underline'>Login</button>
                 <button className='btn btn-outline hover:bg-transparent px-4 h-10 min-h-10 font-medium rounded-xl text-gray-600 hover:text-black'>Register</button>
             </div>
-            <div className='md:hidden'>
+            <div id='hamburger' className='md:hidden z-20' onClick={hamburgerSwitch}>
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="22" height="22" viewBox="0 0 50 50">
                 <path d="M 5 8 A 2.0002 2.0002 0 1 0 5 12 L 45 12 A 2.0002 2.0002 0 1 0 45 8 L 5 8 z M 5 23 A 2.0002 2.0002 0 1 0 5 27 L 45 27 A 2.0002 2.0002 0 1 0 45 23 L 5 23 z M 5 38 A 2.0002 2.0002 0 1 0 5 42 L 45 42 A 2.0002 2.0002 0 1 0 45 38 L 5 38 z"></path>
                 </svg>
+            </div>
+            <div id='option' className='hidden flex-col items-center h-screen w-full absolute top-0 left-0 bg-white z-10'>
+                <div className='h-full w-full flex items-center'>
+                    <ul id='list-container' className='flex flex-col gap-y-16 text-center h-auto w-full justify-center'>
+                        <li className='text-lg' onClick={showFeatures}>Features
+                        <div id='featuresDropdown' className='hidden flex-col gap-y-2 w-full p-2 bg-slate-100 text-sm'>
+                            <div className=''>Todo List</div>
+                            <div className=''>Calendar</div>
+                            <div className=''>Reminders</div>
+                            <div className=''>Planning</div>
+                        </div>
+                        </li>
+                        <li className='text-lg' onClick={showCompany}>Company
+                        <div id='companyDropdown' className='hidden flex-col gap-y-2 w-full p-2 bg-slate-100 text-sm'>
+                            <div className=''>History</div>
+                            <div className=''>Our Team</div>
+                            <div className=''>Blog</div>
+                        </div>
+                        </li>
+                        <li className='text-lg'>Careers</li>
+                        <li className='text-lg'>Account</li>
+                    </ul>
+                </div>
+                <div className='flex flex-col gap-y-2 w-full p-5'>
+                    <button className='btn btn-primary w-full'>Login</button>
+                    <button className='btn btn-secondary w-full'>Register</button>
+                </div>
             </div>
         </nav>
     )
